@@ -1,0 +1,108 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<title>
+CS W4733 COMPUTATIONAL ASPECTS OF ROBOTICS, Spring 2009
+</title>
+</head><body alink="#cc3300" bgcolor="#ffffff" text="#000000" vlink="#ff0000" link="#0000ff">
+
+
+<font face="Verdana, Arial, Helvetica, sans-serif">
+<basefont size="2">
+
+
+</font><p align="center">
+<font face="Verdana, Arial, Helvetica, sans-serif"><img src="hmwk4_files/cscu.jpg" alt="Columbia University, Computer Science
+Department">
+<img src="hmwk4_files/cscutitle.jpg" alt="Columbia University, Computer Science Department">
+</font></p><hr>
+
+<font face="Verdana, Arial, Helvetica, sans-serif">COMS W4733, COMPUTATIONAL ASPECTS OF ROBOTICS, Spring 2009
+<br>
+Team Project 4, Due April 10
+</font><hr>
+<p>
+
+<font face="Verdana, Arial, Helvetica, sans-serif">Reference: An Algorithm for Planning Collision-Free Paths Among
+Polyhedral Obstacles by Lozano-Perez and Wesley.
+</font></p><p>
+<font face="Verdana, Arial, Helvetica, sans-serif">(80 points) Part I: Write a progam to do 2-D collision-free motion planning. Your program
+will take as input a file which contains sets of ordered vertices of
+convex polygons which represents a set of obstacles in your world,
+along with a bounding box around the entire environment. You will grow
+these obstacles by the size of the Create robot (we will give you its
+convex polygonal dimensions) using the reflection algorithm and the
+convex hull algorithm discussed in class.  Then, given an arbitrary
+start and end point in this environment, create a Visibility graph on
+these grown obstacles, and search it using Dijkstra's algorithm to
+find a safe, collision free path.  Your program should graphically
+draw the following (see figure 3b below):
+</font></p><ul>
+<font face="Verdana, Arial, Helvetica, sans-serif"><li>
+The start point
+</li><li>
+The goal point
+</li><li>
+The obstacle set
+</li><li>
+The grown obstacle set
+</li><li>
+The Visibility Graph
+</li><li>
+The safe path
+</li></font></ul>
+
+<font face="Verdana, Arial, Helvetica, sans-serif"><img alt="" src="hmwk4_files/vgraph.gif" style="width: 623px; height: 369px;"><br>
+
+</font><center><font face="Verdana, Arial, Helvetica, sans-serif"><img src="hmwk4_files/animated_gui.gif"><br>Figure 1: PERPathPlannerMainUI</font></center><font face="Verdana, Arial, Helvetica, sans-serif"><br><br>
+Figure 1 shows a GUI rendering of each stage of the path planning:
+</font><ol style="margin-top: 0em;">
+<font face="Verdana, Arial, Helvetica, sans-serif"><li>Original Obstacles (plus wall boundary) &amp; Start and End Points
+</li><li>Grown Obstacles
+</li><li>Visibility Graph
+</li><li>Shortest Path
+</li></font></ol>
+
+
+
+<p>
+<font face="Verdana, Arial, Helvetica, sans-serif">Note 1:  your program should create a safe path (if one exists) for any
+file of obstacles we give you, not just the test case.
+
+</font></p><p>
+<font face="Verdana, Arial, Helvetica, sans-serif">Note 2:  You do not have to grow the workspace's boundary - you may just
+assume this is an already grown obstacle
+</font></p><p>
+<font face="Verdana, Arial, Helvetica, sans-serif">Text file containing the <a style="font-weight: bold;" href="http://www1.cs.columbia.edu/%7Eallen/S09/HMWK/hw4/hw3_world_obstacles.txt">description of the obstacles</a>.
+Format is as follows<br>
+</font></p><ul>
+<font face="Verdana, Arial, Helvetica, sans-serif">  <li>first integer gives you the number of obstacles</li>
+  <li>for each obstacle:</li>
+  </font><ul>
+<font face="Verdana, Arial, Helvetica, sans-serif">    <li>first integer gives you the number of vertices</li>
+    <li>the vertices follow, one per line, each with two coordinates</li>
+    <li>you should close the obstacle by linking the last vertex to the
+first</li>
+  </font></ul>
+<font face="Verdana, Arial, Helvetica, sans-serif">  <li>the first obstacle in the file actually specifies the wall that
+encloses the working environment.</li>
+</font></ul>
+<font face="Verdana, Arial, Helvetica, sans-serif">Text file containing the <a style="font-weight: bold;" href="http://www1.cs.columbia.edu/%7Eallen/S09/HMWK/hw4/hw3_start_goal.txt">start and goal</a> point for the path
+planning algorithm. <br>
+</font><ul>
+<font face="Verdana, Arial, Helvetica, sans-serif">  <li>first line (two coordinates) determines the start point</li>
+  <li>second line (two coordinates) determines the goal point</li>
+</font></ul>
+<p>
+<font face="Verdana, Arial, Helvetica, sans-serif">(20 points) Part II: Use your solution to generate path commands to have your Create
+robot follow the solution.  We will set up an obstacle course and see
+which group's solution is the best: fastest and collision free.
+</font></p><p>
+<font face="Verdana, Arial, Helvetica, sans-serif">Extra Credit: Create's are known to have poor odometry.  Extend your
+path planner to take into account "bumping" into obstacles due to poor
+odometry.  Your planner should react by trying to figuire out which
+obstacle it hit and replanning its path based upon this new info.
+</font></p><p>
+
+
+</p></body></html>
